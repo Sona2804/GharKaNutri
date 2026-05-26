@@ -1,0 +1,6 @@
+{
+  "name": "Indian Household Nutritionist and Diet Planner",
+  "description": "A clinical-grade dietitian planner and nutrient calculator grounded in Indian ingredients, providing mathematical TDEE and personalized clinical chat recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
