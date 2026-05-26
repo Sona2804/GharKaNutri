@@ -21,7 +21,6 @@ import {
   Activity, 
   Check, 
   ChevronRight, 
-  Download, 
   FileText, 
   Flame, 
   Heart, 
@@ -640,26 +639,6 @@ I have automatically calibrated your clinical sliders with these values. Let's d
     }
   };
 
-  // 5. NATIVE FILE DOWNLOAD TRIGGER FOR app.py
-  const triggerAppPyDownload = () => {
-    fetch("/app.py")
-      .then(res => res.text())
-      .then(content => {
-        const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "app.py";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      })
-      .catch(() => {
-        alert("Failed to retrieve the local Python package template source. Verify server.ts running state.");
-      });
-  };
-
   // 6. RENDER STYLED UI COMPONENTS
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans" id="gharkanutri-workspace">
@@ -677,16 +656,6 @@ I have automatically calibrated your clinical sliders with these values. Let's d
             <p className="text-xs text-slate-500">Clinical-Grade Household Meal Architect & Dietologist</p>
           </div>
         </div>
-
-        <button 
-          onClick={triggerAppPyDownload}
-          className="flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
-          title="Download the full original Streamlit app.py script file directly to run locally in Python."
-          id="btn-download-py"
-        >
-          <Download className="w-3.5 h-3.5" />
-          <span>Download Python Code (app.py)</span>
-        </button>
       </header>
 
       {/* CORE SPLIT SCREEN */}
